@@ -37,7 +37,7 @@ for better data visualisation or you can create new account
 - View a snapshot of your progress, including active habits, streaks, and achievements.
 
 ---
-
+run using docker and the commands or
 ## 📦 Installation
 
 ### 1. Clone the Repository
