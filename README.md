@@ -48,7 +48,7 @@ pip install -r requirements.txt
 ```
 
 ### 3. Configure the Database
-No additional setup is required if you’re using **SQLite**, as it’s the default database.
+cp local_settings.example.py local_settings.py**SQLite**,
 
 ### 4. Apply Migrations
 Prepare the database:
