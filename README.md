@@ -1,7 +1,8 @@
 # Habit Tracker
 
 **Habit Tracker** is a web application designed to help you build, track, and maintain habits while achieving personal goals. The app makes habit tracking fun and engaging by visualizing your progress with interactive streaks and progress bars powered by **D3.js**. It’s perfect for anyone looking to stay consistent, monitor their growth, and celebrate milestones.
-
+### Monitor Streaks and Progress Bars
+**Important:** To use streaks and progress bars, you must create a task for the current day, complete it, and then revisit your analytics page. Only then will your streaks and progress start appearing.
 ---
 
 ## 🚀 Features
