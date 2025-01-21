@@ -1,178 +1,86 @@
+/* Global styles */
 body {
-    background: #f6f2f5;
+    background: #f7e1f1; /* Light pink background */
     color: #333333;
-    margin: 0 auto; 
+    margin: 0 auto;
     max-width: 2000px;
-    padding: 0 20px; 
+    padding: 0 20px;
     margin-top: 5rem;
     padding-left: 200px;
-
 }
 
-
 h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+    color: #5e2b8d; /* Purple color for headings */
 }
 
 ul {
     margin: 0;
 }
 
+/* Navbar */
 .bg-steel {
-    background-color: #5f788a;
+    background-color: #9b59b6; /* Purple background for navbar */
 }
 
 .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+    color: #ffffff; /* White color for links */
 }
 
 .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+    color: #f8b9d4; /* Pink color when hovered */
 }
 
 .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
 }
 
+/* Content section */
 .content-section {
-    background: #ebad7b;
+    background: #f1c6d1; /* Light pink background */
     padding: 10px 20px;
     border: 1px solid #dddddd;
     border-radius: 3px;
     margin-bottom: 20px;
 }
 
-
-.small-label {
-    font-size: 0.8rem; 
-}
-
-.form-group {
-    margin-bottom: 1rem; 
-}
-
-.col-sm-2 input,
-.col-sm-4 input {
-    width: 100%; 
-}
-
-
-.custom-margin {
-  margin-right: 20px; 
-}
-
-.streak-card {
-    background-color: #f0f0f0; 
-    border-radius: 20px;
-    padding: 20px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-}
-
-.home-streak-card {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    margin-bottom: 2px
-}
-
-.add-habit-card {
-    background-color: #f0f0f0;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.streak-label {
-    font-weight: bold;
-    font-size: 18px;
-    color: #333;
-}
-.streak-label {
-    font-weight: bold;
+/* Form input fields */
+input[type="text"],
+select,
+textarea,
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+    width: 80%;
+    padding: 0.5rem 1rem;
     font-size: 16px;
-    color: #333;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    background-color: #ffffff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.streak-value {
-    font-size: 36px;
-    color: #007bff;
-    margin-top: 10px;
-}
-
-.streak-info {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.card-title {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: capitalize;
-    margin-bottom: 15px;
-    font-family: 'Arial', sans-serif;
-}
-.home-card-title {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: start;
-    text-transform: capitalize;
-    margin-bottom: 5px;
-    font-family: 'Arial', sans-serif;
-    justify-content: start;
-
-}
-
-.container {
-    width: 95%;
-    max-width: 2000px;
-    margin: center;
-}
-
-
-.navbar {
-    padding-left: 100px;
-}
-
-/* table */
+/* Table styles */
 .table {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f0f0f0;
+    background-color: #f7e1f1; /* Light pink table background */
     padding: 10px;
-    margin-top: 0px;
 }
-
 
 .table td {
     padding: 8px;
-    border: oklch(lightness chroma hue);
+    border: 1px solid #ddd;
     text-align: left;
 }
 
 .table th {
     border-radius: 5px;
-    background-color: #dcdcdc;
-
+    background-color: #9b59b6; /* Purple background for table header */
+    color: #ffffff;
 }
 
-.table-container {
-    margin-top: -10px;
-}
-
-/* buttons */
+/* Buttons */
 .btn {
     border-radius: 15px;
     padding: 10px 20px;
@@ -182,14 +90,14 @@ ul {
 }
 
 .btn-primary {
-    background-color: #3498db;
-    border-color: #3498db;
+    background-color: #ff69b4; /* Pink color for primary buttons */
+    border-color: #ff69b4;
     color: #ffffff;
 }
 
 .btn-primary:hover {
-    background-color: #2980b9;
-    border-color: #2980b9;
+    background-color: #ff3385; /* Darker pink on hover */
+    border-color: #ff3385;
 }
 
 .btn-danger {
@@ -236,6 +144,7 @@ ul {
     border-color: #d35400;
 }
 
+/* Switcher button */
 .switcher-button {
     border-radius: 15px;
     padding: 10px 20px;
@@ -245,22 +154,77 @@ ul {
 }
 
 .switcher-button.active {
-    background-color: #53b6f9;
-    border-color: #3498db;
+    background-color: #ff69b4; /* Pink color for active state */
+    border-color: #ff69b4;
     color: #ffffff;
 }
 
 .switcher-button:not(.active) {
-    background-color: #c5f0fb;
+    background-color: #f1c6d1; /* Light pink color for inactive state */
     border-color: #bdc3c7;
-    color: #34495e;
+    color: #5e2b8d; /* Purple text for inactive state */
 }
 
 .switcher-button:hover:not(.active) {
-    background-color: #d5dbdb;
-    border-color: #95a5a6;
+    background-color: #f8b9d4; /* Light pink on hover for inactive */
+    border-color: #f1a8b2;
 }
 
+/* Streak Card */
+.streak-card {
+    background-color: #f7e1f1; /* Light pink background */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Custom Margin */
+.custom-margin {
+    margin-right: 20px;
+}
+
+/* Streak Value */
+.streak-value {
+    font-size: 36px;
+    color: #9b59b6; /* Purple color for streak value */
+    margin-top: 10px;
+}
+
+/* Progress Bar */
+.progress {
+    height: 20px;
+    border-radius: 8px;
+    background-color: #e6c5e1; /* Light pink progress bar */
+}
+
+.progress-bar {
+    border-radius: 8px;
+    color: #9b59b6; /* Purple progress */
+}
+
+/* Profile/Completed Card */
+.completed-card {
+    background-color: #f7e1f1; /* Light pink background */
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.completed-info-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+/* Custom Input Styles */
 .input-group .start-date-field {
     width: 80%;
     padding: 0.5rem 1rem;
@@ -271,9 +235,6 @@ ul {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-
-
-/* Dropdown menu */
 .form-select {
     width: 80%;
     padding: 0.5rem 1rem;
@@ -283,117 +244,14 @@ ul {
     background-color: #ffffff;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     text-transform: capitalize;
-
 }
 
-/* Style the options within the dropdown */
 .form-select option {
     padding: 0.5rem 1rem;
     font-size: 16px;
 }
 
-
-/* Progress bar */
-.progress {
-    height: 20px;
-    border-radius: 8px;
-    background-color: #d2e9ff;
-}
-
-.progress-bar {
-    border-radius: 8px;
-    color: #007bff;
-}
-
-.progress-text {
-    font-size: 16px;
-    margin-bottom: 0;
-}
-
-.bg-blue {
-    background-color: #007bff;
-}
-
-
-/* Style error messages */
+/* Error Message Styles */
 .text-danger {
-    color: red;
-}
-
-
-
-input[type="text"],
-select,
-textarea {
-    width: 80%;
-    padding: 0.5rem 1rem;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ced4da;
-    background-color: #ffffff;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-input[type="number"],
-input[type="email"],
-input[type="password"] {
-    width: 80%;
-    padding: 0.5rem 1rem;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ced4da;
-    background-color: #ffffff;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-
-/* Custom style for the "Or Custom Create a New Habit" text */
-.custom-create-habit-text {
-    font-size: 18px;
-    font-weight:500;
-    color: #333;
-    margin-top: 10px;
-}
-
-
-.completed-label {
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-    color: #333;
-}
-
-.completed-value {
-    text-align: center;
-    font-size: 24px;
-    color: #007bff;
-    margin-top: 10px;
-}
-
-.completed-card {
-    background-color: #f0f0f0; 
-    border-radius: 20px;
-    padding: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-}
-
-.completed-info-line {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.vertical-line {
-    border-left: 1px solid #1594de;
-    height: 100%;
-    margin: 0 10px;
-}
-
-
-.completed-info-column {
-    flex: 1;
+    color: #e74c3c; /* Red color for error messages */
 }

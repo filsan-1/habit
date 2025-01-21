@@ -52,9 +52,9 @@ def save_streak(sender, instance, **kwargs):
     None
 
     """
-    # Check if the related Streak instance exists
+    
     if hasattr(instance, 'streak'):
-        # Get the Streak instance associated with the Habit
+        
         streak_instance = instance.streak.first()
         if streak_instance:
             streak_instance.save()

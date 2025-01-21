@@ -45,10 +45,10 @@ class ViewTestCase(TestCase):
         data = {'name': 'New Habit', 'frequency': -1, 'period': 'daily', 'goal': -7, 'notes': '', 'start_date': start_date}
         form = HabitForm(data=data)
 
-        # Check if form is invalid
+        
         assert form.is_valid() == False
 
-        # Check if the form errors contain the expected error messages for negative frequency and goal
+        
         assert 'frequency' in form.errors
         assert 'goal' in form.errors
         assert "Ensure this value is greater than or equal to 1." in form.errors['frequency']

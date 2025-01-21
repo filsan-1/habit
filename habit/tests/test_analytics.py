@@ -15,9 +15,9 @@ class AnalyticTestCase(TestCase):
         cls.user_1 = User.objects.create_user(username='test_user_1', password='123456')
         cls.user_2 = User.objects.create_user(username='test_user', password='12345')
 
-        # Create Habit objects one by one
+    
         cls.habit_1 = Habit.objects.create(
-            id=55, name='brush your teeth', frequency=1, period='daily',goal=30,
+            id=55, name='drink water', frequency=1, period='daily',goal=30,
             num_of_tasks=30, notes='', user=cls.user_1,
             creation_time=timezone.make_aware(datetime(2024, 3, 28, 1, 38, 47, 450258)), 
             completion_date=timezone.make_aware(datetime(2024, 4, 27, 1, 38, 47, 450258)),
@@ -25,7 +25,7 @@ class AnalyticTestCase(TestCase):
         )
 
         cls.habit_2 = Habit.objects.create(
-            id=56, name='read books', frequency=2, period='weekly', goal=30,
+            id=56, name='journaling', frequency=2, period='weekly', goal=30,
             num_of_tasks=8, notes='', user=cls.user_1,
             creation_time=timezone.make_aware(datetime(2024, 3, 28, 1, 39, 4, 545451)), 
             completion_date=timezone.make_aware(datetime(2024, 4, 27, 1, 39, 4, 545451)),
@@ -33,7 +33,7 @@ class AnalyticTestCase(TestCase):
         )
 
         cls.habit_3 = Habit.objects.create(
-            id=57, name='exercise', frequency=2, period='weekly', goal=30,
+            id=57, name='stretching', frequency=2, period='weekly', goal=30,
             num_of_tasks=8, notes='', user=cls.user_1,
             creation_time=timezone.make_aware(datetime(2024, 3, 28, 1, 41, 55, 500895)), 
             completion_date=timezone.make_aware(datetime(2024, 4, 27, 1, 41, 55, 500895)),
@@ -41,7 +41,7 @@ class AnalyticTestCase(TestCase):
         )
 
         cls.habit_4 = Habit.objects.create(
-            id=58, name='healthy eating', frequency=1, period='daily', goal=30,
+            id=58, name='exercises', frequency=1, period='daily', goal=30,
             num_of_tasks=30, notes='', user=cls.user_1,
             creation_time=timezone.make_aware(datetime(2024, 3, 28, 1, 42, 56, 350832)),
             completion_date=timezone.make_aware(datetime(2024, 4, 27, 1, 42, 56, 350832)),
@@ -49,7 +49,7 @@ class AnalyticTestCase(TestCase):
         )
 
         cls.habit_5 = Habit.objects.create(
-            id=59, name='budgeting', frequency=2, period='weekly', goal=30,
+            id=59, name='yoga', frequency=2, period='weekly', goal=30,
             num_of_tasks=8, notes='', user=cls.user_1,
             creation_time=timezone.make_aware(datetime(2024, 3, 28, 1, 43, 40, 63651)),
             completion_date=timezone.make_aware(datetime(2024, 4, 27, 1, 43, 40, 62617)),

@@ -147,66 +147,64 @@ class HabitManagerView(View):
         if not request.user.is_authenticated:
             return redirect('login')
         pre_defined_habits = {
-                            'Exercise': {
+                            'Exercises': {
                                 'frequency': '2',
                                 'period': 'weekly',
                                 'goal': '1 month',
-                                'notes': 'Exercising regularly to maintain physical fitness.'
+                                'notes': 'get that summer bodyyy.'
                             },
-                            'Reading': {
+                            'drink water': {
                                 'frequency': '1',
                                 'period': 'daily',
                                 'goal': '1 month',
-                                'notes': 'Reading habit for personal growth and learning.'
+                                'notes': 'hydratiooooon.'
                             },
-                            'Brush your Teeth': {
+                            'stretching': {
                                 'frequency': '2',
                                 'period': 'daily',
                                 'goal': '1 month',
-                                'notes': 'Reminder to maintain oral hygiene by brushing teeth twice daily.'
+                                'notes': 'make sure you stretch'
                             },
-                            'Budgeting': {
+                            'journaling': {
                                 'frequency': '1',
                                 'period': 'weekly',
                                 'goal': '1 month',
-                                'notes': 'Budget finances regularly for financial stability and planning'
+                                'notes': 'release stress through journaling'
                             },
-                            'Meditation': {
+                            'yoga (meditation)': {
                                 'frequency': '1',
                                 'period': 'daily',
                                 'goal': '1 month',
-                                'notes': 'Daily meditation practice for mental well-being and stress relief.'
+                                'notes': 'stress relief.'
                             },
-                             'Monthly Review': {
-                                'frequency': '1',
-                                'period': 'monthly',
+                             'floss': {
+                                'frequency': '2',
+                                'period': 'daily',
                                 'goal': '1 year',
-                                'notes': 'Reflect on achievements and set goals for the upcoming month.'
+                                'notes': 'good oral hygiene.'
                             }
                         }
         if request.method == 'POST':
             form = HabitForm(request.POST)
             if form.is_valid():
-                # Validate if the goal is smaller than the period
+              
                 if not form.is_goal_achievable():
                     messages.error(request, '''The frequency results in a goal that is not
                                 achievable. Choose a longer goal.''')
                     return render(request, 'add_habit.html', {'form': form})
 
-                # Validate if the habit name is not already used or existed
+                
                 if not form.is_valid_habit_name(request.user):
                     messages.error(request, "You already used that name for another habit")
                     return render(request, 'add_habit.html', {'form': form})
 
                 start_date = form.cleaned_data['start_date']
-                # Save the form with the provided start_date
+              
                 habit = form.save(commit=False)
                 habit.user = request.user
                 habit.start_date = start_date
                 habit.save()
 
-                # Create tasks with their due and start dates for the habit
-                # to populate the Task table
                 TaskTracker.create_tasks(habit)
 
                 habit_name = form.cleaned_data.get('name')
@@ -273,18 +271,15 @@ class HabitManagerView(View):
         
         user_id = request.user.id
 
-        # Query all tracked habits with their longest streak and current streak
+    
         all_active_habits = all_tracked_habits(user_id=user_id)
 
-        # Filter tracked habits with the same periodicity
         daily_habits = habits_by_period('daily')(all_active_habits)
         weekly_habits = habits_by_period('weekly')(all_active_habits)
         monthly_habits = habits_by_period('monthly')(all_active_habits)
 
 
 
-        # Calculate progress percentage for each active habit
-        # based on (num_complted + num_failed)/num_of_tasks
         calculate_progress(all_active_habits)
         calculate_progress(daily_habits)
         calculate_progress(weekly_habits)
@@ -377,18 +372,17 @@ class HabitAnalysis(View):
 
         user_id = request.user.id
 
-        # Retrieve all tracked habits and filter them by period
         all_habits = all_tracked_habits(user_id=user_id)
         daily_habits = habits_by_period('daily')(all_habits)
         weekly_habits = habits_by_period('weekly')(all_habits)
         monthly_habits = habits_by_period('monthly')(all_habits)
 
-        #retrieve completed habits
+
         completed_habits = all_completed_habits(user_id)
 
-        # Retrieve the habit with the current longest streak
+      
         longest_current_all_streak = longest_current_streak_over_all_habits()
-        # Retrieve the habit with longest streak
+     
         longest_all_streak = longest_streak_over_all_habits()
 
         weights = {
@@ -449,16 +443,14 @@ class HabitAnalysis(View):
         """
         selected_value = request.POST.get('selectedValue')
 
-        # Retrieve the habit object with related streak using prefetch_related
         habit = Habit.objects.prefetch_related('streak').get(id=selected_value)
 
-        # Serialize the habit object along with related streak data
+
         habit_data = serializers.serialize('json', [habit])
 
-        # Convert serialized data to Python dictionary
         habit_dict = json.loads(habit_data)[0]['fields']
 
-        # Add streak data to habit dictionary
+   
         habit_dict['streak'] = list(habit.streak.values())
 
         return JsonResponse(habit_dict, safe=False)

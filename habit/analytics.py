@@ -141,7 +141,7 @@ def due_today_tasks(user_id):
         A queryset containing tasks due today for the user.
 
     """
-    # Query tasks due today to be completed
+    
     now = timezone.now()
     twenty_four_hours = now + timedelta(hours=25, minutes=2)
     due_today = TaskTracker.objects.filter(
@@ -168,7 +168,7 @@ def active_tasks(user_id):
 
     """
     now = timezone.now()+timedelta(hours=1)
-    # Query tasks that are available to be completed
+
     tasks = TaskTracker.objects.filter(
         habit__user_id=user_id,
         task_status='In progress',
@@ -209,7 +209,7 @@ def calculate_progress(habits):
         A queryset containing active habits.
 
     """
-    # Calculate progress percentage for each active habit
+   
     for habit in habits:
         if habit.num_of_tasks > 0:
             streak = habit.streak.first()
@@ -297,7 +297,7 @@ def normalize_scores(scores):
         if sigma != 0:
             z_scores.append((x - mu) / sigma)
         else:
-            z_scores.append(np.nan)  # or handle the case where sigma is zero appropriately
+            z_scores.append(np.nan) 
 
     return z_scores
 
@@ -325,7 +325,7 @@ def rank_habits(weights, period):
     last_month = now - timedelta(days=30)
 
     prefetch_streaks = Prefetch('streak', queryset=Streak.objects.all())
-    # Fetch habits with prefetching of related streaks
+
     habits = Habit.objects.prefetch_related(prefetch_streaks).filter(period=period,
                                                 creation_time__range=(last_month, now))
 
@@ -337,7 +337,7 @@ def rank_habits(weights, period):
             failed_tasks = streak.num_of_failed_tasks
             longest_streak = streak.longest_streak
             current_streak = streak.current_streak
-            # subtract one day from creation time to avoid ZeroDivisionError
+
             duration = (now - (habit.creation_time - timedelta(days=1))).days
 
             score = calculate_score(completed_tasks, failed_tasks, longest_streak,
@@ -375,7 +375,7 @@ def all_completed_habits(user_id):
     habit completion date is earlier than the current time.
     """
     prefetch_streaks = Prefetch('streak', queryset=Streak.objects.all())
-    # num_of_tasks = F'streak.num_of_completed_tasks' + F'streak.num_of_failed_tasks',
+   
     return Habit.objects.prefetch_related(prefetch_streaks).filter(user_id=user_id, completion_date__lt=timezone.now())
 
 
@@ -394,12 +394,12 @@ def extract_first_failed_task(updated_task_ids):
         List of first failed tasks for each habit.
 
     """
-    # Annotate the minimum task number for each habit
+   
     min_task_numbers = TaskTracker.objects.filter(
         id__in=updated_task_ids
         ).values('habit_id').annotate(min_task_number=Min('task_number'))
 
-    # Fetch the first failed task for each habit using the annotated minimum task number
+   
     first_failed_tasks = TaskTracker.objects.filter(
         id__in=updated_task_ids,
         task_number__in=min_task_numbers.values('min_task_number')
@@ -430,14 +430,12 @@ def update_user_activity(user_id):
     relevant habits.
     """
 
-    # Update tasks statuses from in progress to failed and get their ids
+
     updated_habit_tasks_ids = TaskTracker.update_failed_tasks(user_id=user_id)
     updated_habit_ids, updated_task_ids = updated_habit_tasks_ids
 
-    # The first failed task for each habit is used later to correctly identify
-    # when the user breaks a Habit streak.
+   
     first_failed_tasks = extract_first_failed_task(updated_task_ids)
 
-    # Update achievements if failed task
     Achievement.update_achievements(first_failed_tasks)
     Streak.update_streak(updated_habit_ids)
