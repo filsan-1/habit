@@ -92,6 +92,4 @@ http://localhost:8000
 
 Habit Tracker isn’t just a tool; it’s a motivational companion that helps you stay consistent and achieve your goals. With interactive charts, detailed analytics, and a focus on user experience, tracking your habits has never been easier—or more fun. Start building habits today, and let Habit Tracker help you make them stick! 🚀
 
----
-
-Let me know if you need more details or adjustments!
+--
